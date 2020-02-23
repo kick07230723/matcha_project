@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<!--
+	Imagination by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>너와 나의 맛집, MATCHA</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+<!-- 		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript> -->
+		<!-- 합쳐지고 최소화된 최신 CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- 부가적인 테마 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	</head>
+	<body class="homepage">
+
+	<div id="header-wrapper">
+
+		<!-- Header -->
+		<div th:insert="~{fragments/header::header}"></div>
+		<!-- Header -->
+
+		<!-- Banner -->
+		<div id="banner">
+			<div class="container">
+				
+				<form id="form" action="/detail" method="get">
+					<div class="input-group col-md-6 col-md-offset-3">
+						<input class="storeId" type="hidden" name="storeId"> 
+			        	<input type="text" class="form-control" name="keyword" id="keyword" placeholder="식당, 메뉴를 검색해보아요">
+			          	<div class="input-group-btn">
+			            	<button id="searchBtn" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span></button>
+			            </div>
+				    </div><!-- /input-group -->
+				</form>
+		    </div>
+			
+		</div>
+	    <div class="container">
+	    	<div class="row col-sm-12" id="listDiv">
+    		 	<div class="col-sm-12 col-md-3" style="height: 10%;" th:each="store : ${list}">
+			    	<a href="#" class="store" th:value="${store.storeId}">
+    		 		<div class='thumbnail'>
+    		 			<!-- <img src='...'> -->
+    		 			<div class='caption'>
+    		 				<h3 th:text="${store.storeName}"></h3>
+    		 				<p>설명</p>
+   		 				</div>
+	 				</div>
+			    	</a>
+ 				</div>
+			</div>
+		</div>
+		<!-- /Banner -->
+	</div>
+
+	<!-- Copyright -->
+	<div th:insert="~{fragments/footer::footer}"></div>
+	<!-- Copyright -->
+
+	
+
+
+
+	<script type="text/javascript">
+ 	
+	$("#searchBtn").on("click",function(e){
+		e.preventDefault();
+		var html ="";
+		$.ajax({
+			type: "GET",
+		    url: "/search",
+		    data : {keyword : $("#keyword").val()},
+		    dataType: 'Json',
+	       	success: function(list) {
+	       		for (var i=0; i<list.length; i++){
+					html += "<div class='col-sm-12 col-md-3'><a href='#' value='"+list[i].storeId+"' class='store'><div class='thumbnail'><img src='...'><div class='caption'><h3>"+list[i].storeName+"</h3><p>설명</p></div></div></a></div>"
+	       			$("#listDiv").html(html);
+	       		}
+	       	}
+		})
+	})
+	
+	$(document).on("click",".store",function(e){
+		e.preventDefault();
+		console.log("in");
+		$(".storeId").val($(this).attr("value"));
+		$("#form").submit();
+		
+	})
+
+	</script>
+	</body>
+</html>

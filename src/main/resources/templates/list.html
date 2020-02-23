@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>너와 나의 맛집, MATCHA</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <div th:insert="~{fragments/header::header}"></div>
+	
+	<!-- food Section -->
+	<section style="margin-top: 20px;" class="page-section portfolio" id="food">
+	  <div class="container">
+	
+	
+	    <!-- food Section Heading -->
+	    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Food</h2>
+	
+	    <!-- Icon Divider -->
+	    <div class="divider-custom">
+	      <div class="divider-custom-line"></div>
+	      <div class="divider-custom-icon">
+	        <i class="fas fa-star"></i>
+	      </div>
+	      <div class="divider-custom-line"></div>
+	    </div>
+	
+	    <!-- Food Grid Items -->
+	    <div class="row">
+	
+	      <!-- Food Item  -->
+	      <div class="col-md-4 col-lg-3">
+	      <p>가게 이름</p>
+	        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+	          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+	            <div class="portfolio-item-caption-content text-center text-white">
+	              <i class="fas fa-plus fa-3x"></i>
+	            </div>
+	          </div>
+	          <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
+	        </div>
+	      </div>
+	
+	    </div>
+	    <!-- /.row -->
+	
+	  </div>
+	</section>
+
+  	<!-- About Section -->
+  	<section class="page-section portfolio bg-primary text-white mb-0" id="cafe">
+    	<div class="container">
+
+			<!-- About Section Heading -->
+			<h2 class="page-section-heading text-center text-uppercase text-white">Cafe</h2>
+			
+			<!-- Icon Divider -->
+			<div class="divider-custom divider-light">
+			  <div class="divider-custom-line"></div>
+			  <div class="divider-custom-icon">
+			    <i class="fas fa-star"></i>
+			  </div>
+			  <div class="divider-custom-line"></div>
+			</div>
+			
+			<!-- Food Grid Items -->
+			<div class="row">
+			
+			  <!-- Food Item  -->
+			  <div class="col-md-4 col-lg-3">
+			  <p>가게 이름</p>
+			    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+			      <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+			        <div class="portfolio-item-caption-content text-center text-white">
+			          <i class="fas fa-plus fa-3x"></i>
+			        </div>
+			      </div>
+			      <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
+			    </div>
+			  </div>
+			
+			</div>
+			<!-- /.row -->
+
+	  	</div>
+	</section>
+  
+  <!-- Contact Section -->
+  	<section class="page-section portfolio" id="play">
+    	<div class="container">
+
+			<!-- Contact Section Heading -->
+			<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Play</h2>
+
+	      	<!-- Icon Divider -->
+	      	<div class="divider-custom">
+		        <div class="divider-custom-line"></div>
+		        <div class="divider-custom-icon">
+		          	<i class="fas fa-star"></i>
+		        </div>
+		        <div class="divider-custom-line"></div>
+	      	</div>
+      
+	      	<!-- Food Grid Items -->
+			<div class="row">
+			
+			  <!-- Food Item  -->
+			  <div class="col-md-4 col-lg-3">
+			  <p>가게 이름</p>
+			    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+			      <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+			        <div class="portfolio-item-caption-content text-center text-white">
+			          <i class="fas fa-plus fa-3x"></i>
+			        </div>
+			      </div>
+			      <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
+			    </div>
+			  </div>
+			
+			</div>
+			<!-- /.row -->
+
+    	</div>
+  	</section>
+
+  <!-- Footer -->
+  <div th:insert="~{fragments/footer::footer}"></div>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Portfolio Modals -->
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="fas fa-times fa-fw"></i>
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
