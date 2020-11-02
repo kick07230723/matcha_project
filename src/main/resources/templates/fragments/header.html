@@ -6,9 +6,9 @@
 	   <div class="container">
 	     <a class="navbar-brand js-scroll-trigger" href="/index">MATCHA</a>
 		
-		<form name="query" id="query" action="/list" style="float:center; width:50%;">
-	       	<a href="#" class="btn btn-xs" style="float: right;"><i class="fas fa-search mr-2"></i></a>
-	        <input class="form-control" id="name" type="text" required="required" aria-invalid="false" style="float: right; width:70%">
+		<form id="form" name="form" action="/list" style="float:center; width:50%;">
+	       	<a href="#" id="searchBtn" class="btn btn-xs btn-outline-light" style="float: right;"><i class="fas fa-search mr-2"></i></a>
+	        <input class="form-control" id="query" name="query" type="text" required="required" aria-invalid="false" style="float: right; width:70%;" th:value=${query}>
 		</form> 
 		        
 	     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

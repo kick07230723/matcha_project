@@ -27,18 +27,18 @@ public class MatchaController {
 	}
 	
 	@GetMapping("list")
-	public String list(Model model, @ModelAttribute("keyword") String keyword) {
-		log.info(" ###  List page    ### : "+keyword);
+	public String list(Model model, @ModelAttribute("query") String query) {
+		log.info(" ###  List page    ### : "+query);
 		
 		List<Store> list = new ArrayList<Store>();
 		
 		for (int i=0; i<10; i++) {
 			
 			Store store = new Store();
-			store.setStoreName("안녕 식당"+i);
-			store.setStoreCategory("식당");
+			store.setStoreName(query+i);
+			store.setStoreCategory(query+" 카테");
 			store.setStoreId(i);
-			store.setStoreMenu("연어덮밥");
+			store.setStoreMenu("메뉴"+query);
 			list.add(store);
 		}
 		model.addAttribute("list",list);
@@ -47,26 +47,27 @@ public class MatchaController {
 	
     @RequestMapping(value = "search", method = RequestMethod.GET)
     @ResponseBody
-    public List<Store> search(@ModelAttribute("keyword") String keyword) throws Exception {
-    	log.info("Search page ");
+    public List<Store> search(@ModelAttribute("query") String query) throws Exception {
+    	log.info(" ###  Search page !  ### : "+query);
 		
 		List<Store> list = new ArrayList<Store>();
 		
 		for (int i=0; i<10; i++) {
 			
 			Store store = new Store();
-			store.setStoreName("안녕 식당"+i);
-			store.setStoreCategory("식당");
+			store.setStoreName(query+i);
+			store.setStoreCategory(query+" 카테고리");
 			store.setStoreId(i);
-			store.setStoreMenu("연어덮밥");
+			store.setStoreMenu(query+" 메뉴");
 			list.add(store);
 		}
 		
 		return list;
     }
 	
-	@GetMapping("detail")
-	public String read(Model model, @ModelAttribute("storeId") Integer storeId) {
+    @RequestMapping(value = "detail", method = RequestMethod.GET)
+    @ResponseBody
+	public Store read(Model model, @ModelAttribute("storeId") Integer storeId) {
 		log.info(" ###  Detail page  storeId  ### : "+storeId);
 		Store store = new Store();
 		store.setStoreId(storeId);
@@ -75,7 +76,6 @@ public class MatchaController {
 		store.setStoreName("갓잇");
 		store.setStoreRating("4");
 		
-		model.addAttribute("store", store);
-		return "detail";
+		return store;
 	}
 }

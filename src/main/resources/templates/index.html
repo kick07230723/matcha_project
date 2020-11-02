@@ -43,11 +43,11 @@
 		    <div class="row">
 		      <div class="col-lg-8 mx-auto">
 		        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-		        <form name="query" id="query" action="/list">
+		        <form id="form" action="/list">
 		          <div class="control-group">
 					<div>
-		              <input class="form-control" style="width: 85%; float:left;" id="name" type="text" placeholder="식당, 메뉴, 동네로 검색해보아요!" required="required" aria-invalid="false">
-		              <a class="btn btn-xs btn-outline-light" style="float: left;"><i class="fas fa-search mr-2"></i></a>
+		              <input class="form-control" style="width: 85%; float:left;" id="query" name="query" type="text" placeholder="식당, 메뉴, 동네로 검색해보아요!" required="required" aria-invalid="false">
+		              <a href="#" id="searchBtn" class="btn btn-xs btn-outline-light" style="float: left;"><i class="fas fa-search mr-2"></i></a>
 		            <div class="help-block"></div></div>
 		          </div>
 		        </form>
@@ -85,3 +85,11 @@
 </body>
 
 </html>
+<script type="text/javascript">
+ 	
+	$("#searchBtn").on("click",function(e){
+		e.preventDefault();
+		$("#form").submit();
+	})
+
+</script>
