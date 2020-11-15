@@ -11,10 +11,10 @@ public class Store {
 
 	private Integer storeId;
 	private String storeName;
-	private String storeAddress;
 	private String storeCategory;
 	private String storeMenu;
+	private String storeAddress;
+	private String detailAddress;
 	private String storeHashtag;
-	private String storeRating;
 	
 }

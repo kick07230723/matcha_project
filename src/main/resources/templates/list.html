@@ -43,13 +43,21 @@
 	
 	    <!-- Food Grid Items -->
 	    <div class="row">
-	      <!-- Food Item  -->
-	      <div class="col-md-4 col-lg-3" th:each="store : ${list}">
-	      	<p th:value="${store.storeId}"><h4 th:text="${store.storeName}"></h4></p>
+	    <!-- Food Item  -->
+		    <div th:if="*{myFoodReviewList!=null and #strings.length(myFoodReviewList)==2}">
+		    	<p style="padding-left: 10">결과가 없습니다요!!</p>
+		    </div>
+	        <div class="col-md-4 col-lg-3" th:each="myReview : ${myFoodReviewList}">
+	            <p th:value="${myReview.storeId}"><h4 th:text="${myReview.storeName} + '('+${myReview.storeRating}+')'"></h4></p>
 		        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-					<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-					  	<div class="portfolio-item-caption-content text-center text-white">
-					    	<p th:text="${store.storeMenu}"></p>
+			        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+				        <div class="portfolio-item-caption-content text-center text-white">
+				        	<h4 th:text="${myReview.storeName}" style="display: none;" />
+				        	<h4 th:text="${myReview.storeRating}"/>
+				        	<h6 th:text="${myReview.storeReview}"/>
+				        	<!-- <h6 th:text="${myReview.storeReview} + '('+${myReview.storeRating}+')'"></h6> -->
+				        	<h5 th:text="${myReview.storeMenu}"/>
+				        	<h5 th:text="${myReview.storeAddress}"/>
 					  	</div>
 					</div>
 					<img class="img-fluid" src="img/portfolio/cabin.png" alt="">
@@ -67,7 +75,7 @@
     	<div class="container">
 
 			<!-- About Section Heading -->
-			<h2 class="page-section-heading text-center text-uppercase text-white">Cafe</h2>
+			<h2 class="page-section-heading text-center text-uppercase text-white" id="secretBtn">Cafe</h2>
 			
 			<!-- Icon Divider -->
 			<div class="divider-custom divider-light">
@@ -78,23 +86,30 @@
 			  <div class="divider-custom-line"></div>
 			</div>
 			
-			<!-- Food Grid Items -->
-			<div class="row">
-			
-			  <!-- Food Item  -->
-			  <div class="col-md-4 col-lg-3">
-			  <p>가게 이름</p>
-			    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-			      <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-			        <div class="portfolio-item-caption-content text-center text-white">
-			          <i class="fas fa-plus fa-3x"></i>
-			        </div>
-			      </div>
-			      <img class="img-fluid" src="img/portfolio/cake.png" alt="">
+			<!-- Cafe Grid Items -->
+		    <div class="row">
+		    <!-- Cafe Item  -->
+			    <div th:if="*{myCafeReviewList!=null and #strings.length(myCafeReviewList)==2}">
+			    	<p style="padding-left: 10">결과가 없습니다요!!</p>
 			    </div>
-			  </div>
-			
-			</div>
+		        <div class="col-md-4 col-lg-3" th:each="myReview : ${myCafeReviewList}">
+		            <p th:value="${myReview.storeId}"><h4 th:text="${myReview.storeName} + '('+${myReview.storeRating}+')'"></h4></p>
+			        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+				        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+					        <div class="portfolio-item-caption-content text-center text-white">
+					        	<h4 th:text="${myReview.storeName}" style="display: none;" />
+					        	<h4 th:text="${myReview.storeRating}"/>
+					        	<h6 th:text="${myReview.storeReview}"/>
+					        	<!-- <h6 th:text="${myReview.storeReview} + '('+${myReview.storeRating}+')'"></h6> -->
+					        	<h5 th:text="${myReview.storeMenu}"/>
+					        	<h5 th:text="${myReview.storeAddress}"/>
+						  	</div>
+						</div>
+						<img class="img-fluid" src="img/portfolio/cabin.png" alt="">
+			        </div>
+		      </div>
+		
+		    </div>
 			<!-- /.row -->
 
 	  	</div>
@@ -150,7 +165,7 @@
 
   <!-- Portfolio Modals -->
 
-  <!-- Portfolio Modal 1 -->
+  <!-- 식당  Modal -->
   <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
@@ -166,20 +181,18 @@
                 <!-- Portfolio Modal - Title -->
                 <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="modalStoreName"></h2>
                 <!-- Icon Divider -->
+                <text class="mb-5" id="modalReview"></text> 
+	            <text class="mb-5" id="modalMenu"></text>
+                <text class="mb-5" id="modalAddress"></text>
                 <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
+                  <!-- <div id="modalContent" class="divider-custom-line"></div> -->
+                  <div class="divider-custom-icon" id="modalStarPoint">
                   </div>
-                  <div class="divider-custom-line"></div>
+                  <!-- <div class="divider-custom-line"></div> -->
                 </div>
                 <!-- Portfolio Modal - Image -->
                 <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
                 <!-- Portfolio Modal - Text -->
-                <p class="mb-5" id="modalReview"></p>
-                <p class="mb-5" id="modalMenu"></p>
-                <p class="mb-5" id="modalLocation"></p>
-                <p class="mb-5" id="modalStarPoint"></p>
                 <button class="btn btn-primary" href="#" data-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Close Window
@@ -191,6 +204,7 @@
       </div>
     </div>
   </div>
+  <!-- 식당  Modal 끝-->
 
 
   <!-- Bootstrap core JavaScript -->
@@ -219,10 +233,50 @@ $("#searchBtn").on("click",function(e){
 	$("#form").submit();
 })
 
+$("#secretBtn").on("click",function(e){
+	window.location.href = 'https://www.instagram.com/record.coffee/';
+})
+
+
+var selectedStoreName;
+var selectedStarPoint;
+var selectedReview;
+var selectedMenu;
+var selectedAddress;
+
 $(".portfolio-item-caption").on("click",function(e){
 	console.dir(this);
-	console.dir(this.parent);
+	console.dir(this.innerHTML);
+	console.dir(this.innerText);
+	
+	//$("#modalContent").text(this.children[0].children[0].innerText + this.children[0].children[1].innerText + this.children[0].children[3].innerText)
+	var selectedElement = this.children[0];
+	selectedStoreName = selectedElement.children[0].innerText
+	selectedStarPoint = selectedElement.children[1].innerText
+	selectedReview = selectedElement.children[2].innerText
+	selectedMenu = selectedElement.children[3].innerText
+	selectedAddress = selectedElement.children[4].innerText
+	
+	$("#modalStoreName").text(selectedStoreName);
+	//$("#modalStarPoint").text(selectedStarPoint);
+	$("#modalReview").text(selectedReview);
+	$("#modalMenu").text(selectedMenu);
+	$("#modalAddress").text(selectedAddress);
+	printStarPoint(selectedStarPoint);
+	
 })
+
+function printStarPoint(starPoint){
+	$('#modalStarPoint').html('');
+	var num = 1;
+	while(num < starPoint || num == starPoint){
+		$('#modalStarPoint').append('<i class="fas fa-star"/>');
+		num++;
+	}
+	if(num > starPoint+1)
+		$('#modalStarPoint').append('<i class="fas fa-star-half"/>');
+	
+}
 
 /* $("#searchBtn").on("click",function(e){
 	e.preventDefault();
